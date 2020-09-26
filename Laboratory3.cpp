@@ -1,7 +1,3 @@
-﻿// Задание №1
-// Методичка по ОАИП
-// БГУИР 2007 год
-
 #define   _USE_MATH_DEFINES
 #include <iostream>
 #include <math.h>
