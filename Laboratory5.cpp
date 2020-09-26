@@ -185,7 +185,7 @@ int get_int()											// "проверка на дурака" v.2
 		for (unsigned int i = 0; i < len; i++) {
 			err = 0;
 			if (i == 0 && (c_space[i] == '-' || c_space[i] == '+'));												// Получение знака числа;
-			else if (!isdigit((unsigned char)c_space[i]) && c_space[i] != '.'/* && c_space[i] != 'e'*/) {			  // Получение числа с плавающей точкой и экспоненциальной формы (in progress)
+			else if (!isdigit((unsigned char)c_space[i]) && c_space[i] != '.') {									// Получение числа с плавающей точкой и экспоненциальной формы (in progress)
 				cout << "Incorrect input. Try again: ";
 				err = 1;
 				break;
