@@ -51,11 +51,6 @@ int main()
 		break;
 	}
 
-	//if (u == 0){															// Checking neither x or u equals to 0
-	//	cout << "Something's wrong. Please, restart the program\n\n";
-	//	return 0;
-	//}
-
 	y = a * log(fabs(x)) + exp(x) + c * pow(sin(u*u - 1), 3);
 
 	cout << "\nY equals to " << y << endl;
