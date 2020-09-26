@@ -1,20 +1,15 @@
-﻿// Задание №1
-// Методичка по ОАИП
-// БГУИР 2007 год
-
-#define _USE_MATH_DEFINES
+﻿#define _USE_MATH_DEFINES
 #include <iostream>
 #include <math.h>
 
 using namespace std;
 
-double func_y(double, int);											// Y(x)
-double func_s(double, int);											// Sum(x)
-double func_abs(double, int);											// |Y(x) - Sum(x)|
-void printFunc(double a, double b, double h, int n, const char* text, double (*ff)(double, int)/*int function_number*/);							// Function print
+double func_y(double, int);																					// Y(x)
+double func_s(double, int);																					// Sum(x)
+double func_abs(double, int);																				// |Y(x) - Sum(x)|
+void printFunc(double a, double b, double h, int n, const char* text, double (*ff)(double, int));			// Function, that prints functions :)
 
-int main()
-{
+int main() {
 	int n, des, des_1;
 	double a, b, h;
 
@@ -23,8 +18,8 @@ int main()
 
 	cout << "\n";
 
-	switch (des) { 
-	case 1:													// Присвоение стандартных значений
+	switch (des) {
+	case 1:																									// Присвоение стандартных значений
 		a = 0.1;
 		b = 1.0;
 		h = 0.1;
@@ -32,7 +27,7 @@ int main()
 		cout << "a = 0,1; b = 1,0; h = 0,1; n = 14";
 		break;
 
-	case 2:													// Присвоение данных, вводимых с клавиатуры
+	case 2:																									// Присвоение данных, вводимых с клавиатуры
 		while (true) {
 			cout << "Please, enter a, b, h, n by the space or enter: ";
 			cin >> a >> b >> h >> n;
@@ -49,7 +44,7 @@ int main()
 		cin.ignore(1000, '\n');
 		break;
 
-	default:												// Ошибка выбора
+	default:																								// Ошибка выбора
 		cout << "Incorrect input. Calculating standart a,b,h,n\n";
 		a = 0.1;
 		b = 1.0;
@@ -59,21 +54,21 @@ int main()
 	}
 
 	cout << "\n\n"
-		 << "Choose what you want to calculate:\n"
-		 << "1. Sum(x)\n2. Y(x)\n3. |Y(x) - Sum(x)|\nDesicion: ";
+		<< "Choose what you want to calculate:\n"
+		<< "1. Sum(x)\n2. Y(x)\n3. |Y(x) - Sum(x)|\nDesicion: ";
 
 	cin >> des_1;
 
-	switch (des_1){												// Выбор функции для вычисления значения
-	case 1: default:																				// Sum(x)
+	switch (des_1) {																						// Choose function
+	case 1: default:																					// Sum(x)
 		printFunc(a, b, h, n, "\nS(x):\n", func_y);
 		break;
-	case 2:													// Y(x)
+	case 2:																								// Y(x)
 		printFunc(a, b, h, n, "\nY(x):\n", func_s);
 		break;
 
-	case 3:													// |Y(x) - Sum(x)|
-		printFunc(a, b, h, n, "\n|Y - Sum(x)|:\n", func_abs);											
+	case 3:																								// |Y(x) - Sum(x)|
+		printFunc(a, b, h, n, "\n|Y - Sum(x)|:\n", func_abs);
 		break;
 	}
 
@@ -82,9 +77,9 @@ int main()
 
 
 
- double func_y(double x, int n) { return cos(x * sin(M_PI / 4)) * exp(x * cos(M_PI / 4)) }							// Y(x)
+double func_y(double x, int n) { return cos(x * sin(M_PI / 4)) * exp(x * cos(M_PI / 4)); }				// Y(x)
 
- double func_s(double x, int n) {														// Sum(x)
+double func_s(double x, int n) {																		// Sum(x)
 	long double s = 1.;
 	long double r = 1.;
 
@@ -96,9 +91,9 @@ int main()
 	return s;
 }
 
-double func_abs(double x, int n) { return fabs(func_y(x, n) - func_s(x, n)) }									// |Y(x) - Sum(x)|
+double func_abs(double x, int n) { return fabs(func_y(x, n) - func_s(x, n)); }							// |Y(x) - Sum(x)|
 
-void printFunc(double a, double b, double h, int n, const char *text, double (*ff)(double, int)/*int function_number*/) 
+void printFunc(double a, double b, double h, int n, const char* text, double (*ff)(double, int))
 {
 	cout << text;
 	for (double x = a; x <= b; x += h)
