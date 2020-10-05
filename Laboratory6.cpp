@@ -72,7 +72,7 @@ int partition(int** arr, int low, int high)
 }
 
 
-void quicksort(int** arr, int low, int high)
+void quicksort(int** arr, int low, int high) 
 {
 	if (low < high)							// do recursion until it's sorted
 
@@ -82,14 +82,6 @@ void quicksort(int** arr, int low, int high)
 		quicksort(arr, low, pi - 1);		// do it for both sides of pivot
 		quicksort(arr, pi + 1, high);		// 
 	}
-}
-
-void swap(int* arr, int j, int i)
-{
-	int swap;
-	swap = arr[i + 1];						// swaping pivot to it's sorted place 
-	arr[i + 1] = arr[j];
-	arr[j] = swap;
 }
 
 void printMatrix(int** arr, int size)
