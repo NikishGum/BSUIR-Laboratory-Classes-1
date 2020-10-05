@@ -30,6 +30,8 @@ int main() {
 		for (int n = 0; n < size; n++)
 			a[i][n] = rand() % 40 + 1;
 
+
+
 	// Source matrix print
 	std::cout << "\n\n		* Source Array *\n\n";
 	printMatrix(a, size);
@@ -48,7 +50,7 @@ int main() {
 
 int partition(int** arr, int low, int high)
 {
-	int pivot = arr[high][0];				// pivot can be any element (separates elements on lower and greater than pivot)
+	int pivot = arr[high][0];				// set pivot to the end index
 	int i = low - 1;						// set start element
 	int* swap;
 
@@ -57,27 +59,37 @@ int partition(int** arr, int low, int high)
 											// If current element is smaller than the pivot  
 		if (arr[j][0] < pivot)
 		{
-			i++;							// skiping to next 
-			swap = arr[i];
+			i++;							// skiping to next position for lower number than pivot
+			swap = arr[i];					// swap selected number 
 			arr[i] = arr[j];
 			arr[j] = swap;
 		}
 	}
-	swap = arr[i + 1];						// swaping pivot when done
+	swap = arr[i + 1];						// swaping pivot to it's sorted place 
 	arr[i + 1] = arr[high];
 	arr[high] = swap;
-	return (i + 1);
+	return (i + 1);							// return i + 1	
 }
+
 
 void quicksort(int** arr, int low, int high)
 {
-	if (low < high)
-	{
-		int pi = partition(arr, low, high);
+	if (low < high)							// do recursion until it's sorted
 
-		quicksort(arr, low, pi - 1);
-		quicksort(arr, pi + 1, high);
+	{
+		int pi = partition(arr, low, high);	// pi is item in the right place.
+
+		quicksort(arr, low, pi - 1);		// do it for both sides of pivot
+		quicksort(arr, pi + 1, high);		// 
 	}
+}
+
+void swap(int* arr, int j, int i)
+{
+	int swap;
+	swap = arr[i + 1];						// swaping pivot to it's sorted place 
+	arr[i + 1] = arr[j];
+	arr[j] = swap;
 }
 
 void printMatrix(int** arr, int size)
